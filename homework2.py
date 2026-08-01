@@ -3,7 +3,7 @@ class Shape:
         return length * width
 
 
-# Your original classes stay the same
+
 class parent:
     def __init__(self, bran, model, fuel, color):
         self.bran = bran
@@ -41,4 +41,4 @@ class child(parent):
 mini = child("mini", "cooper", "petrol", "red", "2018", "automatic", "no")
 shape = Shape()
 
-print("Area:", shape.calculate_area(10, 4))
+print("Area:", shape.calculate_area(1111, 4))
