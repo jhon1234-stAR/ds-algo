@@ -1,0 +1,57 @@
+class TreeNode:
+    def __init__(self, data ):
+        self.right = None
+        self.left = None
+        self.val = data
+
+def insert(root, key):
+    if root is None:
+        return TreeNode(key)
+    if key < root.val:
+        root.left = insert(root.left,key)
+    else:
+        root.right = insert(root.right,key)
+    return root
+
+
+def deleteNode(root, key):
+    if root is None:
+        return root
+
+    if key< root.val:
+        root.left = deleteNode(root.left, key)
+
+    else:
+        if root.left == None and root.right == None:
+            return None
+
+        if root.left is None :
+            return root.right
+        elif root.right is None:
+            return root.left
+
+        temp = findMin(root.right)
+
+        root.val = temp.val
+
+        root.right = deleteNode(root.right, temp.val)      
+
+    return root
+
+def findMin(node):
+    current = node 
+    while current.left is not None:
+        current = current.left
+    return current
+
+tree = TreeNode(50)
+insert(tree ,30)
+insert(tree ,20)
+insert(tree ,40)
+insert(tree ,70)
+insert(tree ,60)
+
+print(tree.left.left)
+deleteNode(tree, 200)
+
+print(tree.left.left)
